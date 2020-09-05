@@ -21,7 +21,7 @@ function draw() {
     for(i = 0;i<particles.length;i++){
         particles[i].render();
         for(c = 0;c<particles.length;c++){
-              
+              if(c!=i){
                   if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-20){
                       if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-20){
                          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
@@ -32,7 +32,7 @@ function draw() {
             
                     }
        
-            
+        }
         }
     
     time++;
