@@ -14,27 +14,14 @@ function draw() {
     
     translate(width/2,height/2)
    
-    if(time<100){
+    if(time<300){
     particles[time] = new Particle(time);
     }
+
+    
     for(i = 0;i<particles.length;i++){
         particles[i].render();
-        //console.log(particles[0].d);
-      //  particles[i].velocity.sub(mouse)
-        
-    }
-    for(i = 0;i<particles.length;i++){
-    
-        
-    }
-    
-    for(i = 0;i<particles.length;i++){
         for(c = 0;c<particles.length;c++){
-                if(particles[i].pos.x>300||particles[i].pos.x<-300||particles[i].pos.y>300||particles[i].pos.y<-300){
-               
-                
-             particles[i] = new Particle();
-            }
               
                   if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-30){
                       if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-30){
@@ -89,6 +76,13 @@ class Particle{
  
     
     update(){
+        
+        
+            if(particles[i].pos.x>300||particles[i].pos.x<-300||particles[i].pos.y>300||particles[i].pos.y<-300){
+               this.pos = createVector(random(-100,100),random(-100,100));
+               this.velocity = createVector(random(-1,1),random(-1,1))
+            }
+        
         this.pos.add(this.velocity);
          if(mouseX-300>=this.pos.x-50&&mouseY-300>=this.pos.y-50){
              if(mouseX-300<=this.pos.x+50&&mouseY-300<=this.pos.y+50){
