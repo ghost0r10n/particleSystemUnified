@@ -13,7 +13,7 @@ function draw() {
     
     translate(width/2,height/2)
    
-    if(time<300){
+    if(time<250){
     particles[time] = new Particle(time);
     }
 
