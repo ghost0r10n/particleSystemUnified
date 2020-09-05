@@ -22,8 +22,8 @@ function draw() {
         particles[i].render();
         for(c = 0;c<particles.length;c++){
               
-                  if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-30){
-                      if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-30){
+                  if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-20){
+                      if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-20){
                          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
                           line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)}
                         }
