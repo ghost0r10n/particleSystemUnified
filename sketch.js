@@ -1,11 +1,10 @@
 let particles = [];
-let distances = [];
+
 let time;
 function setup() {
     createCanvas(600,600);
     time = 0;
-    smooth();
-    filter(GRAY)
+
 }
 
 function draw() {
