@@ -10,7 +10,7 @@ function preload(){
 }
 
 function setup() {
-    createCanvas(600,600);
+    createCanvas(innerWidth,innerHeight);
     time = 0;
   noCursor();
    
@@ -20,7 +20,7 @@ function draw() {
     
     background(0);
     
-    image(backImage,-20,-20,width+100,height+100)
+    image(backImage,0,0,width+200,height+200)
     
     stroke(255,115,0)
     strokeWeight(0.5);
@@ -30,7 +30,7 @@ function draw() {
     }
     translate(width/2,height/2)
    
-    if(time<400){
+    if(time<300){
     particles[time] = new Particle(time);
     }
 
@@ -44,7 +44,8 @@ function draw() {
                   if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-30){
                       if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-30){
                          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
-                          line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)}
+                          line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)
+                      }
                         }
               
              
@@ -73,6 +74,8 @@ class Particle{
         this.pos = createVector(random(-100,100),random(-100,100));
         this.velocity = createVector(random(-1,1),random(-1,1))
         this.d = createVector(this.pos.x,this.pos.y);
+        this.s = 5;
+        
     }
     
     render(){
@@ -88,19 +91,19 @@ class Particle{
             this.d.y*=-1
         }
          noFill()
-         stroke(255,115,0,particles[i].d.x+particles[i].d.y);
+         stroke(255,115,0,this.d.x+this.d.y);
    // rect(this.pos.x-50,this.pos.y-50,100,100)
        // fill(255,115,0,this.d.x+this.d.y);
        // ellipse(this.pos.x,this.pos.y,1,1);
         
-        image(pointImage,this.pos.x-2.5,this.pos.y-2.5,5,5)
+        image(pointImage,this.pos.x-((this.d.x+this.d.y)/40)/2,this.pos.y-((this.d.x+this.d.y)/40)/2,(this.d.x+this.d.y)/40,(this.d.x+this.d.y)/40) 
         
     }
  
     
     update(){
         
-         if(this.pos.x>300||this.pos.x<-300||this.pos.y>300||this.pos.y<-300){
+         if(this.pos.x>width/2||this.pos.x<-width/2||this.pos.y>height/2||this.pos.y<-height/2){
                this.pos = createVector(random(-100,100),random(-100,100));
                this.velocity = createVector(random(-1,1),random(-1,1))
             }
@@ -108,8 +111,8 @@ class Particle{
         if(!mouseIsPressed){
         
         this.pos.add(this.velocity);
-         if(mouseX-300>=this.pos.x-50&&mouseY-300>=this.pos.y-50){
-             if(mouseX-300<=this.pos.x+50&&mouseY-300<=this.pos.y+50){
+         if(mouseX-width/2>=this.pos.x-50&&mouseY-height/2>=this.pos.y-50){
+             if(mouseX-width/2<=this.pos.x+50&&mouseY-height/2<=this.pos.y+50){
                  if(this.velocity.y>0){
                     this.velocity.y*=1.1
                  }else{
@@ -118,8 +121,8 @@ class Particle{
                  }
              }
          }
-        if(mouseX-300>=this.pos.x-50&&mouseY-300>=this.pos.y){
-             if(mouseX-300<=this.pos.x+50&&mouseY-300<=this.pos.y+50){
+        if(mouseX-width/2>=this.pos.x-50&&mouseY-height/2>=this.pos.y){
+             if(mouseX-width/2<=this.pos.x+50&&mouseY-height/2<=this.pos.y+50){
                  if(this.velocity.y<0){
                     this.velocity.y*=1.1
                  }else{
@@ -128,8 +131,8 @@ class Particle{
                  }
              }
          }
-        if(mouseX-300>=this.pos.x&&mouseY-300>=this.pos.y-50){
-             if(mouseX-300<=this.pos.x+50&&mouseY-300<=this.pos.y+50){
+        if(mouseX-width/2>=this.pos.x&&mouseY-height/2>=this.pos.y-50){
+             if(mouseX-width/2<=this.pos.x+50&&mouseY-height/2<=this.pos.y+50){
                  if(this.velocity.x<0){
                     this.velocity.x*=1.1
                  }else{
@@ -138,8 +141,8 @@ class Particle{
                  }
              }
          }
-        if(mouseX-300>=this.pos.x-50&&mouseY-300>=this.pos.y-50){
-             if(mouseX-300<=this.pos.x&&mouseY-300<=this.pos.y){
+        if(mouseX-width/2>=this.pos.x-50&&mouseY-height/2>=this.pos.y-50){
+             if(mouseX-width/2<=this.pos.x&&mouseY-height/2<=this.pos.y){
                  if(this.velocity.x>0){
                     this.velocity.x*=1.1
                  }else{
@@ -152,10 +155,10 @@ class Particle{
         
         
         }else{
-             var mouse = createVector(mouseX-300,mouseY-300);
+             var mouse = createVector(mouseX-width/2,mouseY-height/2);
     var acceleration = p5.Vector.sub(mouse,this.pos);
     // Set magnitude of acceleration
-    acceleration.setMag(0.2);
+    acceleration.setMag(0.4);
 
     this.velocity.add(acceleration);
  //   this.velocity.limit(this.topspeed);
