@@ -5,7 +5,7 @@ let backImage;
 let pointImage;
 
 function preload(){
-    backImage = loadImage("assets/back1.jpeg")
+    backImage = loadImage("assets/back2.jpg")
     pointImage = loadImage("assets/point.png")
 }
 
@@ -20,16 +20,17 @@ function draw() {
     
     background(0);
     
-    image(backImage,-20,-20,width,height)
+    image(backImage,-20,-20,width+100,height+100)
     
     stroke(255,115,0)
     strokeWeight(0.5);
     if(!mouseIsPressed){
-    text("Click here",mouseX,mouseY)
+        ellipse(mouseX+23,mouseY-3,60)
+    text("Cliccami",mouseX,mouseY)
     }
     translate(width/2,height/2)
    
-    if(time<200){
+    if(time<400){
     particles[time] = new Particle(time);
     }
 
@@ -91,6 +92,7 @@ class Particle{
    // rect(this.pos.x-50,this.pos.y-50,100,100)
        // fill(255,115,0,this.d.x+this.d.y);
        // ellipse(this.pos.x,this.pos.y,1,1);
+        
         image(pointImage,this.pos.x-2.5,this.pos.y-2.5,5,5)
         
     }
@@ -109,40 +111,40 @@ class Particle{
          if(mouseX-300>=this.pos.x-50&&mouseY-300>=this.pos.y-50){
              if(mouseX-300<=this.pos.x+50&&mouseY-300<=this.pos.y+50){
                  if(this.velocity.y>0){
-                    this.velocity.y*=1.01
+                    this.velocity.y*=1.1
                  }else{
                      this.velocity.y*=-1;
-                     this.velocity.y*=1.01
+                     this.velocity.y*=1.1
                  }
              }
          }
         if(mouseX-300>=this.pos.x-50&&mouseY-300>=this.pos.y){
              if(mouseX-300<=this.pos.x+50&&mouseY-300<=this.pos.y+50){
                  if(this.velocity.y<0){
-                    this.velocity.y*=1.01
+                    this.velocity.y*=1.1
                  }else{
                      this.velocity.y*=-1;
-                     this.velocity.y*=1.01
+                     this.velocity.y*=1.1
                  }
              }
          }
         if(mouseX-300>=this.pos.x&&mouseY-300>=this.pos.y-50){
              if(mouseX-300<=this.pos.x+50&&mouseY-300<=this.pos.y+50){
                  if(this.velocity.x<0){
-                    this.velocity.x*=1.01
+                    this.velocity.x*=1.1
                  }else{
                      this.velocity.x*=-1;
-                     this.velocity.x*=1.01
+                     this.velocity.x*=1.1
                  }
              }
          }
         if(mouseX-300>=this.pos.x-50&&mouseY-300>=this.pos.y-50){
              if(mouseX-300<=this.pos.x&&mouseY-300<=this.pos.y){
                  if(this.velocity.x>0){
-                    this.velocity.x*=1.01
+                    this.velocity.x*=1.1
                  }else{
                      this.velocity.x*=-1;
-                     this.velocity.x*=1.01
+                     this.velocity.x*=1.1
                  }
              }
          }
