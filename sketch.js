@@ -1,10 +1,11 @@
 let particles = [];
-
+let distances = [];
 let time;
 function setup() {
     createCanvas(600,600);
     time = 0;
-
+    smooth();
+    filter(GRAY)
 }
 
 function draw() {
@@ -13,17 +14,23 @@ function draw() {
     
     translate(width/2,height/2)
    
-    if(time<250){
+    if(time<200){
     particles[time] = new Particle(time);
+    }
+    for(i = 0;i<particles.length;i++){
+        
+
+        
     }
 
     
     for(i = 0;i<particles.length;i++){
         particles[i].render();
         for(c = 0;c<particles.length;c++){
-              if(c!=i){
-                  if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-20){
-                      if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-20){
+           if(c!=i){
+              
+                  if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-30){
+                      if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-30){
                          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
                           line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)}
                         }
@@ -31,8 +38,9 @@ function draw() {
              
             
                     }
-       
         }
+       
+            
         }
     
     time++;
@@ -76,8 +84,7 @@ class Particle{
     
     update(){
         
-        
-            if(particles[i].pos.x>300||particles[i].pos.x<-300||particles[i].pos.y>300||particles[i].pos.y<-300){
+         if(this.pos.x>300||this.pos.x<-300||this.pos.y>300||this.pos.y<-300){
                this.pos = createVector(random(-100,100),random(-100,100));
                this.velocity = createVector(random(-1,1),random(-1,1))
             }
