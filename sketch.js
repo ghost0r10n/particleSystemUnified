@@ -32,11 +32,7 @@ function draw() {
     if(time<200){
     particles[time] = new Particle(time);
     }
-    for(i = 0;i<particles.length;i++){
-        
 
-        
-    }
 
     
     for(i = 0;i<particles.length;i++){
@@ -52,6 +48,8 @@ function draw() {
               
              
             
+                    }else{
+                        break;
                     }
         }
        
@@ -78,7 +76,7 @@ class Particle{
     
     render(){
         this.update()
-        stroke(0);
+    //    stroke(0);
         this.d.x=this.pos.x;
         this.d.y=this.pos.y;
         if(this.d.x<0){
@@ -91,7 +89,7 @@ class Particle{
          noFill()
          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
    // rect(this.pos.x-50,this.pos.y-50,100,100)
-        fill(255,115,0,this.d.x+this.d.y);
+       // fill(255,115,0,this.d.x+this.d.y);
        // ellipse(this.pos.x,this.pos.y,1,1);
         image(pointImage,this.pos.x-2.5,this.pos.y-2.5,5,5)
         
