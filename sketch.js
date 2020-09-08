@@ -1,5 +1,5 @@
 let particles = [];
-
+let distances = [];
 let time;
 let backImage;
 let pointImage;
@@ -13,43 +13,40 @@ function setup() {
     createCanvas(innerWidth,innerHeight);
     time = 0;
   noCursor();
-    
    
 }
 
 function draw() {
     
-
-    strokeWeight(0.5);
+    background(0);
+    
     image(backImage,0,0,width+200,height+200)
     
-    
-    
+    stroke(255,115,0)
+    strokeWeight(0.5);
     if(!mouseIsPressed){
         ellipse(mouseX+23,mouseY-3,60)
     text("Cliccami",mouseX,mouseY)
     }
     translate(width/2,height/2)
    
-    if(time<200){
+    if(time<300){
     particles[time] = new Particle(time);
-         time++;
     }
 
 
     
     for(i = 0;i<particles.length;i++){
         particles[i].render();
-     
         for(c = 0;c<particles.length;c++){
            if(c!=i){
               
-                  if(particles[i].pos.x<=particles[c].pos.x+20&&particles[i].pos.x>=particles[c].pos.x-20){
-                      if(particles[i].pos.y<=particles[c].pos.y+20&&particles[i].pos.y>=particles[c].pos.y-20){
+                  if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-30){
+                      if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-30){
                          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
                           line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)
                       }
-                     }
+                        }
               
              
             
@@ -57,11 +54,11 @@ function draw() {
                         break;
                     }
         }
-   
+       
             
         }
     
-   
+    time++;
     
     
    
@@ -178,6 +175,20 @@ class Particle{
     
 
      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
