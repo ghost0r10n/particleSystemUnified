@@ -13,17 +13,18 @@ function setup() {
     createCanvas(innerWidth,innerHeight);
     time = 0;
   noCursor();
+    strokeWeight(0.5);
    
 }
 
 function draw() {
     
-    background(0);
+
     
     image(backImage,0,0,width+200,height+200)
     
-    stroke(255,115,0)
-    strokeWeight(0.5);
+    
+    
     if(!mouseIsPressed){
         ellipse(mouseX+23,mouseY-3,60)
     text("Cliccami",mouseX,mouseY)
@@ -41,12 +42,14 @@ function draw() {
         for(c = 0;c<particles.length;c++){
            if(c!=i){
               
-                  if(particles[i].pos.x<=particles[c].pos.x+30&&particles[i].pos.x>=particles[c].pos.x-30){
-                      if(particles[i].pos.y<=particles[c].pos.y+30&&particles[i].pos.y>=particles[c].pos.y-30){
+                  if(particles[i].pos.x<=particles[c].pos.x+20&&particles[i].pos.x>=particles[c].pos.x-20){
+                      if(particles[i].pos.y<=particles[c].pos.y+20&&particles[i].pos.y>=particles[c].pos.y-20){
                          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
                           line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)
                       }
-                        }
+                     }else{
+                        break;s
+                     }
               
              
             
