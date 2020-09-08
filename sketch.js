@@ -40,6 +40,7 @@ function draw() {
     
     for(i = 0;i<particles.length;i++){
         particles[i].render();
+        if(particles[i].pos.x<width*0.3&&particles[i].pos.x<-(width*0.3)&&particles[i].pos.y<height*0.3&&particles[i].pos.y<-(height*0.3)){
         for(c = 0;c<particles.length;c++){
            if(c!=i){
               
@@ -56,7 +57,7 @@ function draw() {
                         break;
                     }
         }
-       
+        }
             
         }
     
