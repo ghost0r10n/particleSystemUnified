@@ -13,14 +13,14 @@ function setup() {
     createCanvas(innerWidth,innerHeight);
     time = 0;
   noCursor();
-    strokeWeight(0.5);
+    
    
 }
 
 function draw() {
     
 
-    
+    strokeWeight(0.5);
     image(backImage,0,0,width+200,height+200)
     
     
