@@ -33,6 +33,7 @@ function draw() {
    
     if(time<200){
     particles[time] = new Particle(time);
+         time++;
     }
 
 
@@ -47,8 +48,6 @@ function draw() {
                          stroke(255,115,0,particles[i].d.x+particles[i].d.y);
                           line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)
                       }
-                     }else{
-                        break;
                      }
               
              
@@ -61,7 +60,7 @@ function draw() {
             
         }
     
-    time++;
+   
     
     
    
