@@ -1,5 +1,5 @@
 let particles = [];
-let distances = [];
+
 let time;
 let backImage;
 let pointImage;
@@ -31,7 +31,7 @@ function draw() {
     }
     translate(width/2,height/2)
    
-    if(time<300){
+    if(time<200){
     particles[time] = new Particle(time);
     }
 
@@ -48,7 +48,7 @@ function draw() {
                           line(particles[i].pos.x,particles[i].pos.y,particles[c].pos.x,particles[c].pos.y)
                       }
                      }else{
-                        break;s
+                        break;
                      }
               
              
