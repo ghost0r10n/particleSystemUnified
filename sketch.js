@@ -93,7 +93,7 @@ class Particle {
         // fill(255,115,0,this.d.x+this.d.y);
         // ellipse(this.pos.x,this.pos.y,1,1);
 
-        point( this.pos.x - (this.d.x + this.d.y)  , this.pos.y - (this.d.x + this.d.y) , (this.d.x + this.d.y) / 40, (this.d.x + this.d.y) / 40)
+        point( this.pos.x , this.pos.y , (this.d.x + this.d.y) / 40, (this.d.x + this.d.y) / 40)
 
     }
 
