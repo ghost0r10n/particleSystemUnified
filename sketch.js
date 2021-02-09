@@ -4,6 +4,10 @@ let time;
 let backImage;
 let pointImage;
 
+function preload() {
+    backImage = loadImage("assets/back2.jpg")
+    pointImage = loadImage("assets/point.png")
+}
 
 function setup() {
     var canvas = createCanvas(innerWidth, innerHeight);
@@ -17,9 +21,9 @@ function draw() {
 
     background(0);
 
-    //image(backImage, 0, 0, width + 200, height + 200)
+    image(backImage, 0, 0, width + 200, height + 200)
 
-    stroke(0, 255, 0)
+    stroke(255, 115, 0)
     strokeWeight(0.5);
     if (!mouseIsPressed) {
         ellipse(mouseX + 23, mouseY - 3, 60)
@@ -27,7 +31,7 @@ function draw() {
     }
     translate(width / 2, height / 2)
 
-    if (time < 100) {
+    if (time < 300) {
         particles[time] = new Particle(time);
     }
 
@@ -40,7 +44,7 @@ function draw() {
 
                 if (particles[i].pos.x <= particles[c].pos.x + 30 && particles[i].pos.x >= particles[c].pos.x - 30) {
                     if (particles[i].pos.y <= particles[c].pos.y + 30 && particles[i].pos.y >= particles[c].pos.y - 30) {
-                        stroke(0, 255, 0, particles[i].d.x + particles[i].d.y);
+                        stroke(255, 115, 0, particles[i].d.x + particles[i].d.y);
                         line(particles[i].pos.x, particles[i].pos.y, particles[c].pos.x, particles[c].pos.y)
                     }
                 }
@@ -88,12 +92,12 @@ class Particle {
             this.d.y *= -1
         }
         noFill()
-        stroke(0, 255, 0, this.d.x + this.d.y);
+        stroke(255, 115, 0, this.d.x + this.d.y);
         // rect(this.pos.x-50,this.pos.y-50,100,100)
         // fill(255,115,0,this.d.x+this.d.y);
         // ellipse(this.pos.x,this.pos.y,1,1);
 
-        point( this.pos.x , this.pos.y , (this.d.x + this.d.y) / 40, (this.d.x + this.d.y) / 40)
+        image(pointImage, this.pos.x - ((this.d.x + this.d.y) / 40) / 2, this.pos.y - ((this.d.x + this.d.y) / 40) / 2, (this.d.x + this.d.y) / 40, (this.d.x + this.d.y) / 40)
 
     }
 
